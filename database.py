@@ -1,7 +1,33 @@
 import os
+from contextlib import contextmanager
 from pathlib import Path
 import sqlite3
 
+from sqlalchemy import Engine, create_engine
+from sqlalchemy.orm import sessionmaker, Session
+
+from models import Base
+
+Session = sessionmaker()
+engine = create_engine(
+    os.getenv("DB_STR")
+)
+Session.configure(bind=engine)
+Base.metadata.create_all(engine)
+
+
+@contextmanager
+def session_scope():
+    """Provide a transactional scope around a series of operations."""
+    session = Session()
+    try:
+        yield session
+        session.commit()
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
 
 class Database:
     """ Object to handle the interactions with the SQLite database"""

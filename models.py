@@ -20,16 +20,16 @@ class Action(Base):
     __tablename__ = "action"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String(32))
+    name: Mapped[str] = mapped_column(String(32), unique=True)
     type: Mapped[ActionType] = mapped_column(sqlalchemy.Enum(ActionType))
-    content: Mapped[str] = mapped_column(String(200))
+    content: Mapped[str] = mapped_column(String(200), nullable=True)
 
 
 class KeywordList(Base):
     __tablename__ = "keyword_list"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String(32))
+    name: Mapped[str] = mapped_column(String(32), unique=True)
     words: Mapped[List["Keyword"]] = relationship()
 
 

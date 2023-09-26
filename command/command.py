@@ -27,4 +27,4 @@ class GroupLemmyCommand(LemmyCommand):
             if args[0] == command.key():
                 return command.execute(lemmy, session, args[1:])
 
-        return f"\"{args[0]}\" is not a recognised command for {self.key()}"
+        return f"\"{args[0]}\" is not a recognised command for \"{self.key()}\""
