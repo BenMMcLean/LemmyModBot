@@ -7,8 +7,8 @@ name = "pypi"
 pylemmy = "*"
 numpy = "*"
 pandas = "*"
-torch = "*"
-torchtext = "*"
+torch = "1.13.0"
+torchtext = "0.14.0"
 mypy-extensions = "*"
 matrix-client = "*"
 scikit-learn = "*"
@@ -17,4 +17,4 @@ wheel = "*"
 [dev-packages]
 
 [requires]
-python_version = "3.11"
+python_version = "3.10"

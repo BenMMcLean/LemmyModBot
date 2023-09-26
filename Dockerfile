@@ -1,4 +1,4 @@
-FROM python:3.11-slim as base
+FROM python:3.10-slim as base
 
 RUN apt update \
     && apt install -yqq wget git gnupg curl python3-pip
@@ -9,4 +9,4 @@ COPY . /app
 WORKDIR /app
 RUN pipenv install --system --deploy --ignore-pipfile
 
-CMD ["pipenv", "run", "python", "/app/main.py"]
+CMD ["python", "main.py"]
