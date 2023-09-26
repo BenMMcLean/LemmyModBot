@@ -13,6 +13,7 @@ class CommandParser:
     context = ParseContext.NONE
 
     def parse(self, command: str) -> List[str]:
+
         for e in command:
             if e == "\"":
                 if self.context == ParseContext.STRING:

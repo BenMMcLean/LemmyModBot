@@ -30,7 +30,7 @@ class KeywordList(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(32), unique=True)
-    words: Mapped[List["Keyword"]] = relationship()
+    words: Mapped[List["Keyword"]] = relationship(cascade="all,delete", backref="parent")
 
 
 class Keyword(Base):
@@ -38,3 +38,4 @@ class Keyword(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     parent_id: Mapped[int] = mapped_column(ForeignKey("keyword_list.id"))
+    word: Mapped[str] = mapped_column(String(30))
