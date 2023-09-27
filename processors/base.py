@@ -1,4 +1,4 @@
-from typing import List, Any, Optional, Union
+from typing import List, Any, Optional, Union, Dict
 import torchtext
 from pylemmy import Lemmy
 from pylemmy.models.comment import Comment
@@ -81,6 +81,3 @@ class Processor:
 
     def execute(self, content: Content, handle: LemmyHandle) -> ContentResult:
         return ContentResult.nothing()
-
-
-

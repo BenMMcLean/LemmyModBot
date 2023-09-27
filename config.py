@@ -6,7 +6,7 @@ password = os.getenv("LEMMY_PASSWORD")
 instance = os.getenv("LEMMY_INSTANCE")
 owner_username = os.getenv("LEMMY_OWNER_USERNAME")
 communities = [x.strip() for x in os.getenv("LEMMY_COMMUNITIES").split(',')]
-debug_mode = False  # Setting this value to true will mean that the bot will not actually submit reports.
+debug_mode = True  # Setting this value to true will mean that the bot will not actually submit reports.
 
 # Matrix login details for the bot to communicate with a Matrix room
 """    
