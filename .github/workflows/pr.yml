@@ -70,3 +70,13 @@ jobs:
           push: true
           tags: |
             ghcr.io/benmmclean/lemmymodbot:pr-${{ github.event.pull_request.number }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/arm/v6
+          push: true
+          build-args: |
+            BASE=arm32v6/python:3.10-alpine
+          tags: |
+            ghcr.io/benmmclean/lemmymodbot:pr-${{ github.event.pull_request.number }}
