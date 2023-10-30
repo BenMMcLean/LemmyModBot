@@ -2,7 +2,8 @@ from typing import List, Any
 
 import torchtext
 
-from lemmymodbot.processors import Processor, Content, LemmyHandle, ContentResult
+from lemmymodbot.processors import Processor, Content, ContentResult
+from lemmymodbot import LemmyHandle
 from lemmymodbot.processors.base import ContentType
 
 
