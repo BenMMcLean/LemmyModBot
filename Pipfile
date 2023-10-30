@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pylemmy = "*"
 numpy = "*"
 pandas = "*"
 torch = "1.13.0"
@@ -14,6 +13,7 @@ matrix-client = "*"
 scikit-learn = "*"
 wheel = "*"
 imagehash = "*"
+plemmy = "*"
 
 [dev-packages]
 

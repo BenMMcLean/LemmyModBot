@@ -1,7 +1,8 @@
 import torch
 
 from lemmymodbot.ml import ToxicityClassifier
-from lemmymodbot.processors import Processor, Content, LemmyHandle, ContentResult
+from lemmymodbot.processors import Processor, Content, ContentResult
+from lemmymodbot import LemmyHandle
 from lemmymodbot.processors.base import ContentType
 
 
