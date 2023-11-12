@@ -1,0 +1,63 @@
+@startuml ie
+skinparam linetype ortho
+
+entity User {
+    * actor_id : str
+    ---
+    * report_count : number
+    * warned_count : number
+    * removed_count : number
+    * ban_count : number
+    banned_until : Timestamp
+}
+
+entity Content {
+    * content_id : number <<generated>>
+    ---
+    * actor_id : str
+    * content_header_type : ContentType
+    parent_content_id : number
+    * should_rescan : bool
+}
+
+entity ContentField {
+    * content_field_id : number <<generated>>
+    ---
+    * content_id : number <<FK>>
+    * content_field_type : ContentFieldType
+}
+
+entity ContentFieldHistory {
+    * content_field_history_id : number <<generated>>
+    ---
+    * content_field_id : number <<FK>>
+    * content : str
+    * timestamp: Timestamp
+    * scan_timestamp: Timestamp
+}
+
+entity ContentResult {
+    * content_result_id : number <<generated>>
+    ---
+    * content_field_history_id : number <<FK>>
+    * outcome_json : str
+}
+
+entity Report {
+    * report_id : number <<generated>>
+    ---
+    * actor_id : str <<FK>>
+    * content_id : number <<FK>>
+    content_field_id : number <<FK>
+    * reason : str
+    outcome : Outcome
+}
+
+User ||--o{ Report
+User ||--o{ Content
+Content ||--o{ Report
+ContentField ||--o{ Report
+Content ||--|{ ContentField
+ContentField ||--|{ ContentFieldHistory
+ContentFieldHistory ||--o{ ContentResult
+@enduml
