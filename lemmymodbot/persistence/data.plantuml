@@ -3,6 +3,18 @@ skinparam linetype ortho
 
 entity User {
     * actor_id : str
+}
+
+entity Community {
+    * community_id : int
+    ---
+    * current_page_scanned : int
+}
+
+entity UserCommunityStatistics {
+    * statistics_id : number <<generated>>
+    * actor_id : str <<FK>>
+    * community_id : int <<FK>>
     ---
     * report_count : number
     * warned_count : number
@@ -13,24 +25,26 @@ entity User {
 
 entity Content {
     * content_id : number <<generated>>
-    ---
-    * actor_id : str
-    * content_header_type : ContentType
+    * actor_id : str <<FK>>
+    * community_id : number <<FK>>
     parent_content_id : number
+    ---
+    * content_type : ContentType
+    * local_id : int
     * should_rescan : bool
 }
 
 entity ContentField {
     * content_field_id : number <<generated>>
-    ---
     * content_id : number <<FK>>
+    ---
     * content_field_type : ContentFieldType
 }
 
 entity ContentFieldHistory {
     * content_field_history_id : number <<generated>>
-    ---
     * content_field_id : number <<FK>>
+    ---
     * content : str
     * timestamp: Timestamp
     * scan_timestamp: Timestamp
@@ -38,26 +52,42 @@ entity ContentFieldHistory {
 
 entity ContentResult {
     * content_result_id : number <<generated>>
-    ---
     * content_field_history_id : number <<FK>>
-    * outcome_json : str
+    * content_id : number <<FK>>
+    ---
+    * tags : str[]
+    * current : bool
+}
+
+entity ContentMetadata {
+    * content_metadata_id : number <<generated>>
+    * content_field_history_id : number <<FK>>
+    * content_id : number <<FK>>
+    ---
+    * key : str
+    * value : str
+    * current : bool
 }
 
 entity Report {
     * report_id : number <<generated>>
-    ---
     * actor_id : str <<FK>>
     * content_id : number <<FK>>
-    content_field_id : number <<FK>
+    ---
     * reason : str
     outcome : Outcome
 }
 
+User ||-u-|{ UserCommunityStatistics
 User ||--o{ Report
 User ||--o{ Content
+Community ||--o{ UserCommunityStatistics
+Community ||--o{ Content
 Content ||--o{ Report
-ContentField ||--o{ Report
 Content ||--|{ ContentField
+Content ||--o{ ContentResult
+Content ||--o{ ContentMetadata
 ContentField ||--|{ ContentFieldHistory
 ContentFieldHistory ||--o{ ContentResult
+ContentFieldHistory ||--o{ ContentMetadata
 @enduml

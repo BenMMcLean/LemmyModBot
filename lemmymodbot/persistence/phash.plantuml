@@ -1,0 +1,22 @@
+@startuml ie
+skinparam linetype ortho
+
+entity PhashHistory {
+    * phash_history_id : number <<generated>>
+    ---
+    * community_id : number
+    * phash : str
+}
+
+entity PostPhashHistory {
+    * post_id : number
+    phash_history_id : number <<FK>>
+    ---
+    * community_id : number
+    * url : str
+    * phash : str
+}
+
+PhashHistory |o-u-o{ PostPhashHistory
+
+@enduml
