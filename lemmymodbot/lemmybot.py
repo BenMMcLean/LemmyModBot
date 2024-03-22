@@ -59,6 +59,7 @@ class LemmyBot:
         db_directory_name = 'data'
         db_file_name = 'history.db'
         self.history_db = Database(db_directory_name, db_file_name)
+
         self.logger.info("Bot starting!")
         self.mydelay = ReconnectionDelayManager(logger=self.logger)
         self.matrix_facade = MatrixFacade(

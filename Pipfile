@@ -22,10 +22,11 @@ aiostream = "*"
 python-magic = "*"
 pykson = "*"
 libmagic = "*"
-plemmy = "*"
+plemmy = "==0.4.1"
 sqlalchemy = "*"
 alembic = "*"
 pytest = "*"
+mistletoe = "*"
 
 [dev-packages]
 
