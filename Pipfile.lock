@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d43398da1c9f337134f783ffef1ef1f13d90a07ad0f89f05ff4cfe9234fb7403"
+            "sha256": "49e5cbc13944e62a24029792fc0b457c17314fbef44755af736b2d825f519395"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -497,11 +497,12 @@
         },
         "plemmy": {
             "hashes": [
-                "sha256:481ada6ce17154935981cd1fe3bd4244f36a21b217b3c32ec8af96f9b05f7825",
-                "sha256:b7b0064228691956e2746f21ddf5b7bf1e91892be57e55399e1f8d5e4331fd8f"
+                "sha256:86cb052714255815bcf6fda2d6bf99b135f50829ca4d43e979009201c04a289f",
+                "sha256:c0b55a72fcf82e91c7161e7e32cf656d58298a4f0c045949f1f2f7a8fc13d907"
             ],
             "index": "pypi",
-            "version": "==0.4.1"
+            "markers": "python_version >= '3.7'",
+            "version": "==0.4.2"
         },
         "pluggy": {
             "hashes": [
@@ -680,6 +681,7 @@
                 "sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3.7'",
             "version": "==2.31.0"
         },
         "scikit-learn": {
