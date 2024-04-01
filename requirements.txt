@@ -4,7 +4,7 @@ alembic==1.13.1
 annotated-types==0.6.0 ; python_version >= '3.8'
 certifi==2024.2.2 ; python_version >= '3.6'
 charset-normalizer==3.3.2 ; python_full_version >= '3.7.0'
-filelock==3.13.1 ; python_version >= '3.8'
+filelock==3.13.3 ; python_version >= '3.8'
 format-duration==0.0.5
 idna==3.6 ; python_version >= '3.5'
 imagehash==4.3.1
